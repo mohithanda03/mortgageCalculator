@@ -1,4 +1,4 @@
-package com.nl.banking.mortgage.mortgagecalculator.model;
+package com.nl.payments.mortgagecalculator.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,13 +9,12 @@ import java.sql.Timestamp;
 @Getter
 public class InterestRate {
     private int maturityPeriod;
-    private double interestRate;
+    private double interestRatePercentage;
     private Timestamp lastUpdate;
 
-    public InterestRate(int maturityPeriod, double interestRate, Timestamp lastUpdate) {
+    public InterestRate(int maturityPeriod, double interestRatePercentage, Timestamp lastUpdate) {
         this.maturityPeriod = maturityPeriod;
-        this.interestRate = interestRate;
+        this.interestRatePercentage = interestRatePercentage;
         this.lastUpdate = lastUpdate;
     }
 }
-
