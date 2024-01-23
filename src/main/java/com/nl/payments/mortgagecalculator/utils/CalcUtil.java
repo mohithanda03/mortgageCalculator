@@ -10,29 +10,52 @@ import static com.nl.payments.mortgagecalculator.enums.Constants.MONTHS_IN_A_YEA
 import static com.nl.payments.mortgagecalculator.enums.Constants.PERCENTAGE;
 import static java.math.RoundingMode.HALF_UP;
 
+/**
+ * @author Mohit
+ * Type CalcUtil  implements the utility methods.
+ */
 public class CalcUtil {
     private CalcUtil() {
         throw new IllegalStateException("Utility class");
     }
 
+    /**
+     * Calculates the monthly costs of a mortgage based on the given MortgageCheckRequest and interest rate.
+     *
+     * @param request      the MortgageCheckRequest containing loan value and maturity period
+     * @param interestRate the annual interest rate
+     * @return the calculated monthly payment
+     */
     public static BigDecimal calculateMonthlyCosts(MortgageCheckRequest request, double interestRate) {
         double monthlyInterestPercent = interestRate / MONTHS_IN_A_YEAR / PERCENTAGE;
-        int numberOfPayments = request.getMaturityPeriod() * MONTHS_IN_A_YEAR;
+        int totalNbOfPayments = request.getMaturityPeriod() * MONTHS_IN_A_YEAR;
         BigDecimal monthlyPayment;
         monthlyPayment = BigDecimal.valueOf(request.getLoanValue() * (
-                (monthlyInterestPercent * (Math.pow(1 + monthlyInterestPercent, numberOfPayments))) /
-                        (Math.pow(1 + monthlyInterestPercent, numberOfPayments) - 1)
+                (monthlyInterestPercent * (Math.pow(1 + monthlyInterestPercent, totalNbOfPayments))) /
+                        (Math.pow(1 + monthlyInterestPercent, totalNbOfPayments) - 1)
         ));
-        return format2Decimal(monthlyPayment);
+        return toDecimalFormat(monthlyPayment);
     }
 
+    /**
+     * Check if the mortgage is feasible based on the loan value, income, and home value.
+     *
+     * @param request the mortgage check request containing loan value, income, and home value
+     * @return true if the mortgage is feasible, false otherwise
+     */
     public static Boolean isFeasible(MortgageCheckRequest request) {
 
         return request.getLoanValue() <= request.getIncome() * Constants.MAXIMUM_TIMES_INCOME &&
                 request.getLoanValue() <= request.getHomeValue();
     }
 
-    public static BigDecimal format2Decimal(@NotNull BigDecimal val) {
+    /**
+     * Converts the given BigDecimal value to a decimal format with two decimal places.
+     *
+     * @param val the BigDecimal value to be converted
+     * @return the BigDecimal value in decimal format with two decimal places
+     */
+    public static BigDecimal toDecimalFormat(@NotNull BigDecimal val) {
         return val.setScale(2, HALF_UP);
     }
 }

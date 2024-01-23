@@ -15,5 +15,11 @@ public interface InterestRateService {
     List<InterestRate> getCurrentInterestRates();
 
 
+    /**
+     * Get the interest rate by maturity period.
+     *
+     * @param maturityPeriod the maturity period for which mortgage is required
+     * @return the interest rate corresponding to the given maturity period
+     */
     double getInterestRateByMaturityPeriod(int maturityPeriod);
 }

@@ -1,25 +1,18 @@
 package com.nl.payments.mortgagecalculator.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.math.BigDecimal;
 
 /**
  * @author Mohit
- * Type Mortgage Controller Exposes interestRate Endpoints.
+ * Type MortgageCheckResponse holds the response parameters for mortgage response.
  */
-@Setter
-@Getter
+@Data
+@AllArgsConstructor
 public class MortgageCheckResponse {
 
     private boolean feasible;
     private BigDecimal monthlyCosts;
-
-    public MortgageCheckResponse(boolean feasible, BigDecimal monthlyCosts) {
-        this.feasible = feasible;
-        this.monthlyCosts = monthlyCosts;
-
-
-    }
 }

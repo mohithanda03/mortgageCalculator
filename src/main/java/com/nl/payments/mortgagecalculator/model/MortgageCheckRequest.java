@@ -1,25 +1,34 @@
 package com.nl.payments.mortgagecalculator.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-@Setter
-@Getter
+/**
+ * @author Mohit
+ * Type MortgageCheckRequest holds the request parameters for mortgage check Request.
+ */
+@Data
+@AllArgsConstructor
 public class MortgageCheckRequest {
 
-    private double income;
-    private int maturityPeriod;
-    private double loanValue;
-    private double homeValue;
-
-    /**/
-
-    public MortgageCheckRequest(double income, int maturityPeriod, double loanValue, double homeValue) {
-        this.income = income;
-        this.maturityPeriod = maturityPeriod;
-        this.loanValue = loanValue;
-        this.homeValue = homeValue;
-    }
-
+    @Valid
+    @NotNull(message = "Income is required")
+    @Positive(message = "Income should be greater than zero")
+    private Double income;
+    @Valid
+    @NotNull(message = "MaturityPeriod is required")
+    @Positive(message = "MaturityPeriod should be greater than zero")
+    private Integer maturityPeriod;
+    @Valid
+    @NotNull(message = "LoanValue is required")
+    @Positive(message = "LoanValue should be greater than zero")
+    private Double loanValue;
+    @Valid
+    @NotNull(message = "HomeValue is required")
+    @Positive(message = "HomeValue should be greater than zero")
+    private Double homeValue;
 }
 
