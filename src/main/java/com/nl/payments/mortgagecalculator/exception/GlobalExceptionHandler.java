@@ -1,13 +1,14 @@
 package com.nl.payments.mortgagecalculator.exception;
 
-import com.nl.payments.mortgagecalculator.model.ErrorDetails;
+import java.util.Date;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
-import java.util.Date;
+import com.nl.payments.mortgagecalculator.model.ErrorDetails;
 
 /**
  * @author Mohit

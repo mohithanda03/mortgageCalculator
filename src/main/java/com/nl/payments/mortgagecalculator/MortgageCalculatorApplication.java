@@ -1,8 +1,9 @@
 package com.nl.payments.mortgagecalculator;
 
-import com.nl.payments.mortgagecalculator.model.InterestRate;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.nl.payments.mortgagecalculator.model.InterestRate;
 
 import java.sql.Timestamp;
 import java.time.Instant;

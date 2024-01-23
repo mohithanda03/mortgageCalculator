@@ -1,12 +1,14 @@
 package com.nl.payments.mortgagecalculator.service.impl;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.nl.payments.mortgagecalculator.model.MortgageCheckRequest;
 import com.nl.payments.mortgagecalculator.model.MortgageCheckResponse;
 import com.nl.payments.mortgagecalculator.service.InterestRateService;
 import com.nl.payments.mortgagecalculator.service.MortgageService;
 import com.nl.payments.mortgagecalculator.utils.CalcUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 

@@ -18,3 +18,4 @@ public class InterestRate {
         this.lastUpdate = lastUpdate;
     }
 }
+

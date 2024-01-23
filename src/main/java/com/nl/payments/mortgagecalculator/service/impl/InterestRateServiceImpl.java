@@ -3,6 +3,7 @@ package com.nl.payments.mortgagecalculator.service.impl;
 import com.nl.payments.mortgagecalculator.MortgageCalculatorApplication;
 import com.nl.payments.mortgagecalculator.model.InterestRate;
 import com.nl.payments.mortgagecalculator.service.InterestRateService;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
