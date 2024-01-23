@@ -1,15 +1,19 @@
-package com.nl.banking.mortgage.mortgagecalculator.service.impl;
+package com.nl.payments.mortgagecalculator.service.impl;
 
-import com.example.mortgage.calculator.model.MortgageCheckRequest;
-import com.example.mortgage.calculator.model.MortgageCheckResponse;
-import com.example.mortgage.calculator.service.InterestRateService;
-import com.example.mortgage.calculator.service.MortgageService;
+import com.nl.payments.mortgagecalculator.model.MortgageCheckRequest;
+import com.nl.payments.mortgagecalculator.model.MortgageCheckResponse;
+import com.nl.payments.mortgagecalculator.service.InterestRateService;
+import com.nl.payments.mortgagecalculator.service.MortgageService;
+import com.nl.payments.mortgagecalculator.utils.CalcUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static com.example.mortgage.calculator.utils.Calculations.calculateMonthlyCosts;
-import static com.example.mortgage.calculator.utils.Calculations.isFeasible;
+import java.math.BigDecimal;
 
+/**
+ * @author Mohit
+ * Type MortgageServiceImpl Implements  the MortgageService.
+ */
 @Service
 public class MortgageServiceImpl implements MortgageService {
 
@@ -20,13 +24,10 @@ public class MortgageServiceImpl implements MortgageService {
     public MortgageCheckResponse performMortgageCheck(MortgageCheckRequest request) {
         double interestRate = interestRateService.getInterestRateByMaturityPeriod(request.getMaturityPeriod());
 
-        boolean feasible = isFeasible(request);
-        double monthlyCosts = calculateMonthlyCosts(request, interestRate);
-
+        boolean feasible = CalcUtil.isFeasible(request);
+        BigDecimal monthlyCosts = CalcUtil.calculateMonthlyCosts(request, interestRate);
         return new MortgageCheckResponse(feasible, monthlyCosts);
     }
-
-
 
 
 }
