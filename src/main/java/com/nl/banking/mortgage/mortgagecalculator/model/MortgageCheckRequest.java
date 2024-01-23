@@ -1,9 +1,7 @@
-package com.nl.banking.mortgage.mortgagecalculator.model;
+package com.nl.payments.mortgagecalculator.model;
 
 import lombok.Getter;
 import lombok.Setter;
-
-import java.math.BigDecimal;
 
 @Setter
 @Getter
