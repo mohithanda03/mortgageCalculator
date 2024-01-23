@@ -7,8 +7,9 @@ import com.nl.payments.mortgagecalculator.service.InterestRateService;
 import com.nl.payments.mortgagecalculator.service.MortgageService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,14 +23,17 @@ import java.util.List;
 @RequestMapping("/mortgage")
 public class MortgageController {
 
-    @Autowired
-    private InterestRateService interestRateService;
+    private final InterestRateService interestRateService;
+    private final MortgageService mortgageService;
 
     @Autowired
-    private MortgageService mortgageService;
+    public MortgageController(MortgageService mortgageService, InterestRateService interestRateService) {
+        this.mortgageService = mortgageService;
+        this.interestRateService = interestRateService;
+    }
 
     /**
-     * Gets all the interest Rates.
+     * Gets the list of interest Rates.
      *
      * @return List of interest Rates.
      */
@@ -40,14 +44,14 @@ public class MortgageController {
     }
 
     /**
-     * Creates a new Recipe.
+     * Checks if the given fields are feasible for a mortgage  .
      *
      * @param request Calculates monthly costs based on given fields.
      * @return Response as feasibility and monthly cost.
      */
     @Operation(summary = "Mortgage Check")
-    @PostMapping("/mortgage-check")
-    public MortgageCheckResponse performMortgageCheck(@Validated @RequestBody MortgageCheckRequest request) {
-        return mortgageService.performMortgageCheck(request);
+    @PostMapping(path = "/mortgage-check", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<MortgageCheckResponse> mortgageCheck(@Valid @RequestBody MortgageCheckRequest request) {
+        return ResponseEntity.ok(mortgageService.performMortgageCheck(request));
     }
 }

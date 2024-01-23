@@ -11,6 +11,12 @@ import org.springframework.stereotype.Service;
 @Service
 public interface MortgageService {
 
+    /**
+     * Perform a mortgage check based on the provided request.
+     *
+     * @param request the mortgage request
+     * @return the mortgage feasibility response
+     */
     MortgageCheckResponse performMortgageCheck(MortgageCheckRequest request);
 
 }

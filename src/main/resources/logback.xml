@@ -14,7 +14,7 @@
 
     <appender name="RollingFile"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOGS}/recipe-api.log</file>
+        <file>${LOGS}/mortgageCalculator.log</file>
         <encoder
                 class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%d %p %C{1} [%t] %m%n</Pattern>
@@ -22,7 +22,7 @@
 
         <rollingPolicy
                 class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOGS}/archived/recipe-api-%d{yyyy-MM-dd}.%i.log
+            <fileNamePattern>${LOGS}/archived/mortgageCalculator-%d{yyyy-MM-dd}.%i.log
             </fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -35,7 +35,7 @@
         <appender-ref ref="Console"/>
     </root>
 
-    <logger name="com.nl.recipe" level="trace" additivity="false">
+    <logger name="com.nl.payments.mortgagecalculator" level="trace" additivity="false">
         <appender-ref ref="RollingFile"/>
         <appender-ref ref="Console"/>
     </logger>
