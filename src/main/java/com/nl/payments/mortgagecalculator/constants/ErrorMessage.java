@@ -1,4 +1,4 @@
-package com.nl.payments.mortgagecalculator.enums;
+package com.nl.payments.mortgagecalculator.constants;
 
 import lombok.experimental.UtilityClass;
 

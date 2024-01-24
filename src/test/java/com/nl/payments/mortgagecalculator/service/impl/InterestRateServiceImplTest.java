@@ -15,7 +15,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.nl.payments.mortgagecalculator.enums.ErrorMessage.INTEREST_RATE_NOT_FOUND;
+import static com.nl.payments.mortgagecalculator.constants.ErrorMessage.INTEREST_RATE_NOT_FOUND;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -30,9 +30,6 @@ class InterestRateServiceImplTest {
     @Autowired
     private InterestRateServiceImpl interestRateServiceImpl;
 
-    /**
-     * Method under test: {@link InterestRateServiceImpl#getCurrentInterestRates()}
-     */
     @Test
     @DisplayName("Given no interest rates should return empty list")
     void testGetCurrentInterestRates() {
@@ -45,10 +42,6 @@ class InterestRateServiceImplTest {
         assertSame(interestRateList, actualCurrentInterestRates);
     }
 
-    /**
-     * Method under test:
-     * {@link InterestRateServiceImpl#getInterestRateByMaturityPeriod(int)}
-     */
     @Test
     @DisplayName("Given maturity period should return interest rate")
     void testGetInterestRateByMaturityPeriod() {
@@ -61,10 +54,6 @@ class InterestRateServiceImplTest {
         assertEquals(4.5, actualInterestRateByMaturityPeriod);
     }
 
-    /**
-     * Method under test:
-     * {@link InterestRateServiceImpl#getInterestRateByMaturityPeriod(int)}
-     */
     @Test
     @DisplayName("Given maturity period should return interest rate")
     void testGetInterestRateByMaturityPeriod2() {
@@ -78,20 +67,12 @@ class InterestRateServiceImplTest {
         assertEquals(4.5, actualInterestRateByMaturityPeriod);
     }
 
-    /**
-     * Method under test:
-     * {@link InterestRateServiceImpl#getInterestRateByMaturityPeriod(int)}
-     */
     @Test
     @DisplayName("Given maturity period Zero should return exception")
     void testGetInterestRateByMaturityPeriod3() {
         assertThrows(NegativeArraySizeException.class, () -> interestRateServiceImpl.getInterestRateByMaturityPeriod(0));
     }
 
-    /**
-     * Method under test:
-     * {@link InterestRateServiceImpl#getInterestRateByMaturityPeriod(int)}
-     */
     @Test
     @DisplayName("Given maturity period should return exception")
     void testGetInterestRateByMaturityPeriod4() {

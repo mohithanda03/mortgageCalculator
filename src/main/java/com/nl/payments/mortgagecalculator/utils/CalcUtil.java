@@ -1,14 +1,14 @@
 package com.nl.payments.mortgagecalculator.utils;
 
-import com.nl.payments.mortgagecalculator.enums.Constants;
+import com.nl.payments.mortgagecalculator.constants.MortgageConstants;
 import com.nl.payments.mortgagecalculator.model.MortgageCheckRequest;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
-import static com.nl.payments.mortgagecalculator.enums.Constants.MONTHS_IN_A_YEAR;
-import static com.nl.payments.mortgagecalculator.enums.Constants.PERCENTAGE;
+import static com.nl.payments.mortgagecalculator.constants.MortgageConstants.MONTHS_IN_A_YEAR;
+import static com.nl.payments.mortgagecalculator.constants.MortgageConstants.PERCENTAGE;
 import static java.math.RoundingMode.HALF_UP;
 
 /**
@@ -44,7 +44,7 @@ public class CalcUtil {
      */
     public static Boolean isFeasible(MortgageCheckRequest request) {
 
-        return request.getLoanValue() <= request.getIncome() * Constants.MAXIMUM_TIMES_INCOME &&
+        return request.getLoanValue() <= request.getIncome() * MortgageConstants.MAXIMUM_TIMES_INCOME &&
                 request.getLoanValue() <= request.getHomeValue();
     }
 

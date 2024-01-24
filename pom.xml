@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.nl.payments</groupId>
     <artifactId>mortgagecalculator</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>mortgage calculator</name>
     <description>Project for Mortgage Calculator</description>
     <properties>

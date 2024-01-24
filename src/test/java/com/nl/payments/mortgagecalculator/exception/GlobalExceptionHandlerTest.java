@@ -17,7 +17,7 @@ import org.springframework.web.context.request.WebRequest;
 
 import java.util.List;
 
-import static com.nl.payments.mortgagecalculator.enums.ErrorMessage.INTEREST_RATE_NOT_FOUND;
+import static com.nl.payments.mortgagecalculator.constants.ErrorMessage.INTEREST_RATE_NOT_FOUND;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
@@ -28,10 +28,6 @@ class GlobalExceptionHandlerTest {
   @Autowired
   private GlobalExceptionHandler globalExceptionHandler;
 
-  /**
-   * Method under test:
-   * {@link GlobalExceptionHandler#handleInterestRateException(InterestRateNotFoundException, WebRequest)}
-   */
   @Test
   @DisplayName("Given interest rate not found exception should return error details")
   void testHandleInterestRateException() {
@@ -41,21 +37,17 @@ class GlobalExceptionHandlerTest {
             .handleInterestRateException(exception, new ServletWebRequest(new MockHttpServletRequest()));
 
     ErrorDetails body = actualHandleInterestRateExceptionResult.getBody();
-    assertEquals("No interest rate found for maturity period", body.getMessage());
+      assert body != null;
+      assertEquals("No interest rate found for maturity period", body.getMessage());
     assertEquals("uri=", body.getDetails());
     assertEquals(404, actualHandleInterestRateExceptionResult.getStatusCodeValue());
     assertTrue(actualHandleInterestRateExceptionResult.hasBody());
     assertTrue(actualHandleInterestRateExceptionResult.getHeaders().isEmpty());
   }
 
-  /**
-   * Method under test:
-   * {@link GlobalExceptionHandler#handleMethodArgumentNotValid(MethodArgumentNotValidException, WebRequest)}
-   */
   @Test
-  @DisplayName("Given interest rate not found exception should return error details")
+  @DisplayName("Given invalid mortgage details exception should return error details")
   void testHandleMethodArgumentNotValid() {
-    new InterestRateNotFoundException("An error occurred");
     MethodArgumentNotValidException exception = mock(MethodArgumentNotValidException.class);
     when(exception.getMessage()).thenReturn("An error occurred");
     when(exception.getBindingResult()).thenReturn(new BindException("Target", "Object Name"));
@@ -69,33 +61,10 @@ class GlobalExceptionHandlerTest {
     assertTrue(actualHandleMethodArgumentNotValidResult.getHeaders().isEmpty());
   }
 
-  /**
-   * Method under test:
-   * {@link GlobalExceptionHandler#handleGlobalException(Exception, WebRequest)}
-   */
   @Test
   @DisplayName("Given global exception should return error details")
   void testHandleGlobalException() {
-    Exception exception = new Exception("foo");
-    ResponseEntity<ErrorDetails> actualHandleGlobalExceptionResult = globalExceptionHandler
-            .handleGlobalException(exception, new ServletWebRequest(new MockHttpServletRequest()));
-    ErrorDetails body = actualHandleGlobalExceptionResult.getBody();
-      assert body != null;
-      assertEquals("foo", body.getMessage());
-    assertEquals("uri=", body.getDetails());
-    assertEquals(500, actualHandleGlobalExceptionResult.getStatusCodeValue());
-    assertTrue(actualHandleGlobalExceptionResult.hasBody());
-    assertTrue(actualHandleGlobalExceptionResult.getHeaders().isEmpty());
-  }
-
-  /**
-   * Method under test:
-   * {@link GlobalExceptionHandler#handleGlobalException(Exception, WebRequest)}
-   */
-  @Test
-  @DisplayName("Given global exception should return error details")
-  void testHandleGlobalException2() {
-    Exception exception = new Exception("foo");
+    Exception exception = new Exception("An error occurred");
     HttpServletRequestWrapper request = mock(HttpServletRequestWrapper.class);
     when(request.getRequestURI()).thenReturn("https://mortgage/mortgage");
 
@@ -104,11 +73,10 @@ class GlobalExceptionHandlerTest {
     verify(request).getRequestURI();
     ErrorDetails body = actualHandleGlobalExceptionResult.getBody();
       assert body != null;
-      assertEquals("foo", body.getMessage());
+      assertEquals("An error occurred", body.getMessage());
     assertEquals("uri=https://mortgage/mortgage", body.getDetails());
     assertEquals(500, actualHandleGlobalExceptionResult.getStatusCodeValue());
     assertTrue(actualHandleGlobalExceptionResult.hasBody());
     assertTrue(actualHandleGlobalExceptionResult.getHeaders().isEmpty());
   }
-
 }

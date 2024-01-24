@@ -25,10 +25,6 @@ class MortgageServiceImplTest {
     @Autowired
     private MortgageServiceImpl mortgageServiceImpl;
 
-    /**
-     * Method under test:
-     * {@link MortgageServiceImpl#performMortgageCheck(MortgageCheckRequest)}
-     */
     @Test
     @DisplayName("Given mortgageCheckRequest should return feasibility true")
     void testPerformMortgageCheck() {
@@ -42,10 +38,6 @@ class MortgageServiceImplTest {
         assertTrue(actualPerformMortgageCheckResult.isFeasible());
     }
 
-    /**
-     * Method under test:
-     * {@link MortgageServiceImpl#performMortgageCheck(MortgageCheckRequest)}
-     */
     @Test
     @DisplayName("Given mortgageCheckRequest should return feasibility false")
     void testPerformMortgageCheck2() {
@@ -59,10 +51,6 @@ class MortgageServiceImplTest {
         assertFalse(actualPerformMortgageCheckResult.isFeasible());
     }
 
-    /**
-     * Method under test:
-     * {@link MortgageServiceImpl#performMortgageCheck(MortgageCheckRequest)}
-     */
     @Test
     void testPerformMortgageCheck3() {
         when(interestRateService.getInterestRateByMaturityPeriod(anyInt())).thenReturn(4.0);
