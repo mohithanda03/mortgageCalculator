@@ -20,7 +20,6 @@ class MortgageCheckRequestTest {
      */
     @Test
     void testEquals() {
-        // Arrange, Act and Assert
         assertNotEquals(new MortgageCheckRequest(10000.0, 1, 9000.0, 9000.0), null);
         assertNotEquals(new MortgageCheckRequest(9000.0, 1, 9000.0, 9000.0), "Different type to MortgageCheckRequest");
     }
@@ -30,10 +29,9 @@ class MortgageCheckRequestTest {
      */
     @Test
     void testEquals2() {
-        // Arrange
+
         MortgageCheckRequest mortgageCheckRequest = new MortgageCheckRequest(null, 1, 9000.0, 9000.0);
 
-        // Act and Assert
         assertNotEquals(mortgageCheckRequest, new MortgageCheckRequest(9000.0, 1, 9000.0, 9000.0));
     }
 
@@ -42,10 +40,8 @@ class MortgageCheckRequestTest {
      */
     @Test
     void testEquals3() {
-        // Arrange
         MortgageCheckRequest mortgageCheckRequest = new MortgageCheckRequest(50000.0, 1, 9000.0, 9000.0);
 
-        // Act and Assert
         assertNotEquals(mortgageCheckRequest, new MortgageCheckRequest(9000.0, 1, 9000.0, 9000.0));
     }
 
@@ -54,10 +50,9 @@ class MortgageCheckRequestTest {
      */
     @Test
     void testEquals4() {
-        // Arrange
+
         MortgageCheckRequest mortgageCheckRequest = new MortgageCheckRequest(9000.0, 3, 9000.0, 9000.0);
 
-        // Act and Assert
         assertNotEquals(mortgageCheckRequest, new MortgageCheckRequest(9000.0, 1, 9000.0, 9000.0));
     }
 
@@ -210,11 +205,9 @@ class MortgageCheckRequestTest {
      */
     @Test
     void testEqualsAndHashCode5() {
-        // Arrange
         MortgageCheckRequest mortgageCheckRequest = new MortgageCheckRequest(9000.0, 1, null, 9000.0);
         MortgageCheckRequest mortgageCheckRequest2 = new MortgageCheckRequest(9000.0, 1, null, 9000.0);
 
-        // Act and Assert
         assertEquals(mortgageCheckRequest, mortgageCheckRequest2);
         int expectedHashCodeResult = mortgageCheckRequest.hashCode();
         assertEquals(expectedHashCodeResult, mortgageCheckRequest2.hashCode());
@@ -230,11 +223,9 @@ class MortgageCheckRequestTest {
      */
     @Test
     void testEqualsAndHashCode6() {
-        // Arrange
         MortgageCheckRequest mortgageCheckRequest = new MortgageCheckRequest(9000.0, 1, 5000.0, null);
         MortgageCheckRequest mortgageCheckRequest2 = new MortgageCheckRequest(9000.0, 1, 5000.0, null);
 
-        // Act and Assert
         assertEquals(mortgageCheckRequest, mortgageCheckRequest2);
         int expectedHashCodeResult = mortgageCheckRequest.hashCode();
         assertEquals(expectedHashCodeResult, mortgageCheckRequest2.hashCode());
@@ -260,7 +251,6 @@ class MortgageCheckRequestTest {
     @Test
     @DisplayName("Calling getters and setters should return new mortgage check request")
     void testGettersAndSetters() {
-        // Arrange and Act
         MortgageCheckRequest actualMortgageCheckRequest = new MortgageCheckRequest(65000.0, 13, 90000.0, 99000.0);
         actualMortgageCheckRequest.setHomeValue(99000.0);
         actualMortgageCheckRequest.setIncome(65000.0);

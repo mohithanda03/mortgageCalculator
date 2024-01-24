@@ -20,11 +20,9 @@ class InterestRateNotFoundExceptionTest {
     @Test
     @DisplayName("Calling newInterestRateNotFoundException() should return new interest rate not found exception")
     void testNewInterestRateNotFoundException() {
-        // Arrange and Act
         InterestRateNotFoundException actualInterestRateNotFoundException = new InterestRateNotFoundException(
                 INTEREST_RATE_NOT_FOUND);
 
-        // Assert
         assertEquals("No interest rate found for maturity period", actualInterestRateNotFoundException.getLocalizedMessage());
         assertEquals("No interest rate found for maturity period", actualInterestRateNotFoundException.getMessage());
         assertNull(actualInterestRateNotFoundException.getCause());

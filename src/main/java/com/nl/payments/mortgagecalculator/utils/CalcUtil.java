@@ -3,6 +3,7 @@ package com.nl.payments.mortgagecalculator.utils;
 import com.nl.payments.mortgagecalculator.enums.Constants;
 import com.nl.payments.mortgagecalculator.model.MortgageCheckRequest;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
@@ -14,10 +15,8 @@ import static java.math.RoundingMode.HALF_UP;
  * @author Mohit
  * Type CalcUtil  implements the utility methods.
  */
+@Component
 public class CalcUtil {
-    private CalcUtil() {
-        throw new IllegalStateException("Utility class");
-    }
 
     /**
      * Calculates the monthly costs of a mortgage based on the given MortgageCheckRequest and interest rate.

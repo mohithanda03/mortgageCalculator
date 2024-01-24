@@ -16,13 +16,9 @@ class InterestRateTest {
     @Test
     @DisplayName("Calling newInterestRate() should return new interest rate")
     void testNewInterestRate() {
-        // Arrange
         Timestamp lastUpdate = mock(Timestamp.class);
-
-        // Act
         InterestRate actualInterestRate = new InterestRate(1, 9000.0, lastUpdate);
 
-        // Assert
         assertEquals(1, actualInterestRate.getMaturityPeriod());
         assertEquals(9000.0, actualInterestRate.getInterestRatePercentage());
         assertSame(lastUpdate, actualInterestRate.getLastUpdate());

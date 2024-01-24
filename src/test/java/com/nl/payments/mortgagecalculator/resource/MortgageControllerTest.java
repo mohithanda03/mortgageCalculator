@@ -42,11 +42,9 @@ class MortgageControllerTest {
     @Test
     @DisplayName("Calling GET /interest-rates should return list of current interest rates")
     void testGetInterestRates() throws Exception {
-        // Arrange
         when(interestRateService.getCurrentInterestRates()).thenReturn(new ArrayList<>());
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/mortgage/interest-rates");
 
-        // Act and Assert
         MockMvcBuilders.standaloneSetup(mortgageController)
                 .build()
                 .perform(requestBuilder)
@@ -72,7 +70,6 @@ class MortgageControllerTest {
         MockHttpServletRequestBuilder requestBuilder = contentTypeResult
                 .content(objectMapper.writeValueAsString(new MortgageCheckRequest(65000.0, 10, 100000.0, 500000.0)));
 
-        // Act and Assert
         MockMvcBuilders.standaloneSetup(mortgageController)
                 .build()
                 .perform(requestBuilder)

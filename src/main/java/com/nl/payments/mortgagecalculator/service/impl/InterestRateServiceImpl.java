@@ -1,10 +1,11 @@
 package com.nl.payments.mortgagecalculator.service.impl;
 
-import com.nl.payments.mortgagecalculator.MortgageCalculatorApplication;
 import com.nl.payments.mortgagecalculator.exception.InterestRateNotFoundException;
 import com.nl.payments.mortgagecalculator.model.InterestRate;
+import com.nl.payments.mortgagecalculator.repository.InterestRateRepository;
 import com.nl.payments.mortgagecalculator.service.InterestRateService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +21,13 @@ import static com.nl.payments.mortgagecalculator.enums.ErrorMessage.MATURITY_PER
 @Service
 public class InterestRateServiceImpl implements InterestRateService {
 
+    @Autowired
+    private InterestRateRepository interestRateRepository;
+
+    public InterestRateServiceImpl (InterestRateRepository interestRateRepository) {
+        this.interestRateRepository = interestRateRepository;
+    }
+
     /**
      * Retrieves the current interest rates.
      *
@@ -27,7 +35,7 @@ public class InterestRateServiceImpl implements InterestRateService {
      */
     @Override
     public List<InterestRate> getCurrentInterestRates() {
-        return MortgageCalculatorApplication.INTEREST_RATES;
+        return interestRateRepository.getAllInterestRate();
     }
 
     /**
@@ -41,7 +49,8 @@ public class InterestRateServiceImpl implements InterestRateService {
         double interestRate;
         if (maturityPeriod != 0) {
             try {
-                interestRate = MortgageCalculatorApplication.INTEREST_RATES.get(maturityPeriod - 1).getInterestRatePercentage();
+                interestRate = interestRateRepository.getInterestRateByMaturityPeriod(maturityPeriod - 1)
+                        .getInterestRatePercentage();
             } catch (IndexOutOfBoundsException e) {
                 throw new InterestRateNotFoundException(INTEREST_RATE_NOT_FOUND + maturityPeriod);
             }

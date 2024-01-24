@@ -16,10 +16,8 @@ class MortgageCheckResponseTest {
     @Test
     @DisplayName("Calling newMortgageCheckResponse() should return new mortgage check response")
     void testNewMortgageCheckResponse() {
-        // Arrange and Act
         MortgageCheckResponse actualMortgageCheckResponse = new MortgageCheckResponse(true, BigDecimal.valueOf(112233));
 
-        // Assert
         assertEquals(BigDecimal.valueOf(112233), actualMortgageCheckResponse.getMonthlyCosts());
         assertTrue(actualMortgageCheckResponse.isFeasible());
     }
