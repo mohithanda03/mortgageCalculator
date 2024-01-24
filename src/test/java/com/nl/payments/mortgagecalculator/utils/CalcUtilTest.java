@@ -10,10 +10,7 @@ import static com.nl.payments.mortgagecalculator.utils.CalcUtil.toDecimalFormat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalcUtilTest {
-    /**
-     * Method under test:
-     * {@link CalcUtil#calculateMonthlyCosts(MortgageCheckRequest, double)}
-     */
+
     @Test
     @DisplayName("Given mortgageCheckRequest and interestRate should return monthly costs")
     void testCalculateMonthlyCosts() {
@@ -21,9 +18,6 @@ class CalcUtilTest {
                 CalcUtil.calculateMonthlyCosts(new MortgageCheckRequest(95000.0, 15, 250000.0, 300000.0), 3.5));
     }
 
-    /**
-     * Method under test: {@link CalcUtil#isFeasible(MortgageCheckRequest)}
-     */
     @Test
     @DisplayName("Given mortgageCheckRequest should return true if it is feasible")
     void testIsFeasible() {
@@ -32,9 +26,6 @@ class CalcUtilTest {
         assertFalse(CalcUtil.isFeasible(new MortgageCheckRequest(250000.0, 5, 40000.0, 10000.0)));
     }
 
-    /**
-     * Method under test: {@link CalcUtil#toDecimalFormat(BigDecimal)}
-     */
     @Test
     @DisplayName("Given Monthly Costs should return formatted to 2 decimal places")
     void testToDecimalFormat() {
@@ -42,9 +33,6 @@ class CalcUtilTest {
         assertEquals(new BigDecimal("2300.00"), actualToDecimalFormatResult);
     }
 
-    /**
-     * Test the formatting of zero decimal value.
-     */
     @Test
     @DisplayName("Given zero monthly costs should return formatted to 2 decimal places")
     void testFormatDecimalZero() {

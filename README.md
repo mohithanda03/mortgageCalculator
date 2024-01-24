@@ -2,7 +2,7 @@
 MortgageCalculator
 
 A java based backend application using REST to calculate mortgage and eligibility based on mortgage details provided.
-This API has been developed usin Java 17, Spring-boot 3.2.2 and Maven.
+This API has been developed using Java 17, Spring-boot 3.2.2 and Maven.
 
 Instructions to run to run this api:
 ### Build

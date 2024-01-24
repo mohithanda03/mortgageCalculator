@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.nl.payments.mortgagecalculator.enums.ErrorMessage.INTEREST_RATE_NOT_FOUND;
-import static com.nl.payments.mortgagecalculator.enums.ErrorMessage.MATURITY_PERIOD_IS_ZERO;
+import static com.nl.payments.mortgagecalculator.constants.ErrorMessage.INTEREST_RATE_NOT_FOUND;
+import static com.nl.payments.mortgagecalculator.constants.ErrorMessage.MATURITY_PERIOD_IS_ZERO;
 
 /**
  * @author Mohit

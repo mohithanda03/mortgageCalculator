@@ -10,9 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.Mockito.mock;
 
 class InterestRateTest {
-    /**
-     * Method under test: {@link InterestRate#InterestRate(int, double, Timestamp)}
-     */
+
     @Test
     @DisplayName("Calling newInterestRate() should return new interest rate")
     void testNewInterestRate() {

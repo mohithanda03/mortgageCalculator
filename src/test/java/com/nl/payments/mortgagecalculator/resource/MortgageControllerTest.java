@@ -36,9 +36,6 @@ class MortgageControllerTest {
     @MockBean
     private MortgageService mortgageService;
 
-    /**
-     * Method under test: {@link MortgageController#getInterestRates()}
-     */
     @Test
     @DisplayName("Calling GET /interest-rates should return list of current interest rates")
     void testGetInterestRates() throws Exception {
@@ -53,14 +50,9 @@ class MortgageControllerTest {
                 .andExpect(MockMvcResultMatchers.content().string("[]"));
     }
 
-    /**
-     * Method under test:
-     * {@link MortgageController(MortgageCheckRequest)}
-     */
     @Test
     @DisplayName("Calling POST /mortgage/mortgage-check should return feasibility true")
     void testPerformMortgageCheck() throws Exception {
-        // Arrange
         when(mortgageService.performMortgageCheck(Mockito.any()))
                 .thenReturn(new MortgageCheckResponse(true, new BigDecimal("1650.00")));
         MockHttpServletRequestBuilder contentTypeResult = MockMvcRequestBuilders.post("/mortgage/mortgage-check")

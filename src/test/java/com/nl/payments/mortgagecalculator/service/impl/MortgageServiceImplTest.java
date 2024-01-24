@@ -25,10 +25,6 @@ class MortgageServiceImplTest {
     @Autowired
     private MortgageServiceImpl mortgageServiceImpl;
 
-    /**
-     * Method under test:
-     * {@link MortgageServiceImpl#performMortgageCheck(MortgageCheckRequest)}
-     */
     @Test
     @DisplayName("Given mortgageCheckRequest should return feasibility true")
     void testPerformMortgageCheck() {
@@ -43,10 +39,6 @@ class MortgageServiceImplTest {
         assertEquals(expectedMonthlyCosts, actualPerformMortgageCheckResult.getMonthlyCosts());
     }
 
-    /**
-     * Method under test:
-     * {@link MortgageServiceImpl#performMortgageCheck(MortgageCheckRequest)}
-     */
     @Test
     @DisplayName("Given mortgageCheckRequest should return feasibility false")
     void testPerformMortgageCheck3() {
