@@ -17,41 +17,8 @@ import java.util.List;
  * Type MortgageCalculatorApplication calculates feasibility and monthly cost based on the provided morgage details.
  */
 @Slf4j
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.nl.payments.mortgagecalculator")
 public class MortgageCalculatorApplication {
-
-    public static final List<InterestRate> INTEREST_RATES = new ArrayList<>();
-
-    static {
-        INTEREST_RATES.add(new InterestRate(1, 4.5, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(2, 4.4, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(3, 4.3, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(4, 4.2, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(5, 4.1, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(6, 4.0, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(7, 3.9, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(8, 3.8, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(9, 3.7, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(10, 3.6, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(11, 3.5, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(12, 3.5, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(13, 3.5, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(14, 3.5, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(15, 3.5, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(16, 3.2, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(17, 3.2, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(18, 3.2, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(19, 3.2, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(20, 3.2, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(21, 3.0, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(22, 3.0, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(23, 3.0, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(24, 3.0, Timestamp.from(Instant.now())));
-        INTEREST_RATES.add(new InterestRate(25, 3.0, Timestamp.from(Instant.now())));
-
-        log.info("{} Interest Rates loaded successfully ", INTEREST_RATES.size());
-    }
-
     /**
      * The main method for starting the MortgageCalculatorApplication.
      *

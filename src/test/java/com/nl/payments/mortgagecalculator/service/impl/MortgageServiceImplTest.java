@@ -32,14 +32,11 @@ class MortgageServiceImplTest {
     @Test
     @DisplayName("Given mortgageCheckRequest should return feasibility true")
     void testPerformMortgageCheck() {
-        // Arrange
         when(interestRateService.getInterestRateByMaturityPeriod(anyInt())).thenReturn(3.5);
 
-        // Act
         MortgageCheckResponse actualPerformMortgageCheckResult = mortgageServiceImpl
                 .performMortgageCheck(new MortgageCheckRequest(95000.00, 20, 50000.00, 100000.00));
 
-        // Assert
         verify(interestRateService).getInterestRateByMaturityPeriod(anyInt());
         assertTrue(actualPerformMortgageCheckResult.isFeasible());
         BigDecimal expectedMonthlyCosts = new BigDecimal("289.98");
@@ -53,14 +50,11 @@ class MortgageServiceImplTest {
     @Test
     @DisplayName("Given mortgageCheckRequest should return feasibility false")
     void testPerformMortgageCheck3() {
-        // Arrange
         when(interestRateService.getInterestRateByMaturityPeriod(anyInt())).thenReturn(4.5);
 
-        // Act
         MortgageCheckResponse actualPerformMortgageCheckResult = mortgageServiceImpl
                 .performMortgageCheck(new MortgageCheckRequest(65000.00, 10, 400000.00, 100000.00));
 
-        // Assert
         verify(interestRateService).getInterestRateByMaturityPeriod(anyInt());
         assertFalse(actualPerformMortgageCheckResult.isFeasible());
         BigDecimal expectedMonthlyCosts = new BigDecimal("4145.54");

@@ -14,7 +14,6 @@ public interface InterestRateService {
 
     List<InterestRate> getCurrentInterestRates();
 
-
     /**
      * Get the interest rate by maturity period.
      *
